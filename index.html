@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בנות בקר בטביליסי | 29/11-2/12</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --blue: #2b5b7a;
+            --blue-light: #ebf3f7;
+            --sage: #648871;
+            --sage-light: #edf4ef;
+            --brown: #8a5d3b;
+            --brown-light: #f6efe9;
+            --bg-main: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            --border-soft: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.55;
+            padding: 16px 12px 32px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 12px 6px 18px;
+            background-color: transparent;
+        }
+
+        .logo {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--blue);
+            box-shadow: 0 4px 12px rgba(43, 91, 122, 0.18);
+            margin-bottom: 12px;
+            background-color: #ffffff;
+        }
+
+        .main-title {
+            font-size: 1.95rem;
+            font-weight: 800;
+            color: var(--blue);
+            background-color: transparent;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .sub-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--brown);
+            background-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .quick-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.92rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .quick-btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-blue { background-color: var(--blue); }
+        .btn-sage { background-color: var(--sage); }
+        .btn-brown { background-color: var(--brown); }
+
+        /* Trip Info Strip */
+        .info-strip {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            padding: 12px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--sage);
+        }
+
+        .strip-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .strip-item i {
+            color: var(--sage);
+            width: 18px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* Day Cards */
+        .day-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 16px 14px;
+            margin-bottom: 18px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .day-card.theme-blue { border-top: 5px solid var(--blue); }
+        .day-card.theme-sage { border-top: 5px solid var(--sage); }
+        .day-card.theme-brown { border-top: 5px solid var(--brown); }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .day-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .theme-blue .day-badge { background-color: var(--blue); }
+        .theme-sage .day-badge { background-color: var(--sage); }
+        .theme-brown .day-badge { background-color: var(--brown); }
+
+        .day-title {
+            font-size: 1.18rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .theme-blue .day-title { color: var(--blue); }
+        .theme-sage .day-title { color: var(--sage); }
+        .theme-brown .day-title { color: var(--brown); }
+
+        /* Accordion Details & Summary */
+        details.schedule-item {
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            background-color: #ffffff;
+            transition: box-shadow 0.2s ease;
+        }
+
+        details.schedule-item:last-of-type {
+            margin-bottom: 0;
+        }
+
+        details.schedule-item[open] {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        summary.schedule-summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 11px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            user-select: none;
+            font-weight: 700;
+            font-size: 0.98rem;
+        }
+
+        summary.schedule-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .theme-blue summary.schedule-summary { background-color: var(--blue-light); color: var(--blue); }
+        .theme-sage summary.schedule-summary { background-color: var(--sage-light); color: var(--sage); }
+        .theme-brown summary.schedule-summary { background-color: var(--brown-light); color: var(--brown); }
+
+        .summary-main {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .time-pill {
+            background-color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.84rem;
+            font-weight: 800;
+            white-space: nowrap;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+        }
+
+        .summary-title {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .chevron {
+            font-size: 0.9rem;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        details[open] > summary .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Details Content & Info Rows */
+        .details-content {
+            padding: 10px 12px;
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px dashed #eef0f3;
+            font-size: 0.94rem;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+            padding-bottom: 2px;
+        }
+
+        .info-row i {
+            width: 18px;
+            text-align: center;
+            margin-top: 4px;
+            flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+
+        .theme-blue .info-row i { color: var(--blue); }
+        .theme-sage .info-row i { color: var(--sage); }
+        .theme-brown .info-row i { color: var(--brown); }
+
+        .info-row a.nav-link {
+            font-weight: 700;
+            text-decoration: underline;
+            color: var(--blue);
+            word-break: break-word;
+        }
+
+        .info-row a.wa-link {
+            font-weight: 700;
+            text-decoration: underline;
+            color: #15803d;
+        }
+
+        .tag-cash {
+            display: inline-block;
+            background-color: #fef3c7;
+            color: #92400e;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 1px 7px;
+            border-radius: 6px;
+            margin-right: 4px;
+        }
+
+        .tag-opt {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #3730a3;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 1px 7px;
+            border-radius: 6px;
+            margin-right: 4px;
+        }
+
+        .good-night {
+            text-align: center;
+            margin-top: 12px;
+            padding-top: 8px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        /* Cost Table */
+        .cost-table-wrapper {
+            overflow-x: auto;
+            margin-top: 8px;
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+        }
+
+        table.cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: right;
+        }
+
+        table.cost-table th {
+            background-color: var(--blue);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 10px 8px;
+        }
+
+        table.cost-table td {
+            padding: 9px 8px;
+            border-bottom: 1px solid var(--border-soft);
+            vertical-align: middle;
+        }
+
+        table.cost-table tbody tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        table.cost-table tfoot tr.summary-row-base {
+            background-color: var(--sage-light);
+            font-weight: 800;
+            color: var(--sage);
+        }
+
+        table.cost-table tfoot tr.summary-row-total {
+            background-color: var(--blue-light);
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        table.cost-table tfoot tr.summary-row-cash {
+            background-color: var(--brown-light);
+            font-weight: 800;
+            color: var(--brown);
+        }
+
+        table.cost-table tfoot td {
+            border-top: 2px solid var(--border-soft);
+            border-bottom: none;
+            padding: 10px 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 24px;
+            padding: 16px 10px;
+            border-top: 1px solid #d1d5db;
+        }
+
+        .footer-primary {
+            color: var(--blue);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .footer-secondary {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <img src="1.jpg" alt="Logo" class="logo">
+        <h1 class="main-title">בנות בקר בטביליסי</h1>
+        <p class="sub-title">29/11-2/12</p>
+
+        <div class="quick-links">
+            <a href="https://www.accuweather.com/en/ge/tbilisi/171705/weather-forecast/171705" target="_blank" rel="noopener noreferrer" class="quick-btn btn-blue">
+                <i class="fas fa-cloud-sun"></i> תחזית מזג אוויר
+            </a>
+            <a href="https://maps.app.goo.gl/sGwAQFkktNZNhp8H7" target="_blank" rel="noopener noreferrer" class="quick-btn btn-brown">
+                <i class="fas fa-hotel"></i> לינה
+            </a>
+            <a href="#kosher-restaurants" class="quick-btn btn-sage">
+                <i class="fas fa-utensils"></i> מסעדות כשרות
+            </a>
+            <a href="#cost-summary" class="quick-btn btn-blue">
+                <i class="fas fa-coins"></i> טבלת עלויות
+            </a>
+        </div>
+    </header>
+
+    <!-- Quick Trip Info -->
+    <div class="info-strip">
+        <div class="strip-item">
+            <i class="fas fa-sun"></i>
+            <span>שקיעה: 17:30</span>
+        </div>
+        <div class="strip-item">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>מט"ח: 1 לארי = 1.3 ₪</span>
+        </div>
+        <div class="strip-item">
+            <i class="fas fa-clock"></i>
+            <span>שעון: +2 שעות מישראל</span>
+        </div>
+        <div class="strip-item">
+            <i class="fas fa-taxi"></i>
+            <span>מוניות: אפליקציית Bolt</span>
+        </div>
+    </div>
+
+    <!-- DAY 1 -->
+    <section class="day-card theme-blue">
+        <div class="day-header">
+            <div class="day-badge"><i class="fas fa-plane-arrival"></i></div>
+            <h2 class="day-title">29/11 יום ראשון - נחיתה והיכרות העיר</h2>
+        </div>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">04:30</span>
+                    <span class="summary-title">נפגשות בנתב"ג</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-suitcase-rolling"></i>
+                    <span>התכנסות בשדה התעופה בן גוריון</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>יש לבדוק מראש את מספר הטרמינל</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">06:25</span>
+                    <span class="summary-title">ממריאות לטיול</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-plane-departure"></i>
+                    <span>המראה מתל אביב לכיוון טביליסי</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">11:00</span>
+                    <span class="summary-title">נחיתה בטביליסי</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-plane-arrival"></i>
+                    <span>נחיתה בשדה התעופה של טביליסי</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-coins"></i>
+                    <span>מומלץ להזמין מט"ח לשדה מראש או להמיר דולרים בשדה בעמדה של <strong>Intelexpress</strong></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-sim-card"></i>
+                    <span>מי שצריכה סים מקומי – זה הזמן לקנות בעמדה של <strong>Magti</strong></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">12:30</span>
+                    <span class="summary-title">יוצאים לכיוון המלון</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-taxi"></i>
+                    <span>נסיעה משדה התעופה למלון</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/NvzwCaCGreGE3LRUA" target="_blank" rel="noopener noreferrer" class="nav-link">ניווט למיקום המלון בגוגל מפות</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">13:00-14:00</span>
+                    <span class="summary-title">הגעה למלון, התמקמות והתארגנות</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-bed"></i>
+                    <span>התמקמות בחדרים והתארגנות ליציאה</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>מומלץ לבדוק צ'ק אין מוקדם להתרעננות</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">14:00-15:30</span>
+                    <span class="summary-title">הכרת העיר</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-taxi"></i>
+                    <span>הגעה עם מונית למרכז העיר</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-pin"></i>
+                    <span><a href="https://maps.app.goo.gl/JZJGeVe4u6DmnuYw5" target="_blank" rel="noopener noreferrer" class="nav-link">מיקום נקודת התחלה במרכז העיר</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <span><a href="https://maps.app.goo.gl/3AEBWDrushwKs5kx6" target="_blank" rel="noopener noreferrer" class="nav-link">מגדל השעון המפורסם</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-walking"></i>
+                    <span><a href="https://maps.app.goo.gl/UwPakZMBbWRNzKHb7" target="_blank" rel="noopener noreferrer" class="nav-link">רחובות יפים בעיר העתיקה</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-landmark"></i>
+                    <span><a href="https://maps.app.goo.gl/PFUGgeyNxAAH4PtW6" target="_blank" rel="noopener noreferrer" class="nav-link">מוזיאון יהדות גאורגיה</a> <span class="tag-opt">אופציונלי</span> – עלות כניסה: <strong>10 לארי</strong> (13 ₪)</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/Um8cB4XvwKBRj9R77" target="_blank" rel="noopener noreferrer" class="nav-link">כיכר גודיאשווילי</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-archway"></i>
+                    <span><a href="https://maps.app.goo.gl/FXBxFbmvu94FStYB8" target="_blank" rel="noopener noreferrer" class="nav-link">גשר השלום</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-route"></i>
+                    <span><a href="https://maps.app.goo.gl/kYTy8XBt3LFTvcud9" target="_blank" rel="noopener noreferrer" class="nav-link">מפת כל המסלול הרגלי</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">15:30-16:15</span>
+                    <span class="summary-title">שייט על נהר הקורה</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-ship"></i>
+                    <span>שייט נהדר על הנהר, זמן להפוגה נעימה לרגליים</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-shekel-sign"></i>
+                    <span>עלות: <strong>30 לארי</strong> לאדם (39 ₪) <span class="tag-cash">מזומן בלבד</span></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/njaczWGgVkYCxKLUA" target="_blank" rel="noopener noreferrer" class="nav-link">מיקום היציאה לשייט</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">16:15-18:00</span>
+                    <span class="summary-title">פארק רייק והרכבל למצודת נרקילה</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-tree"></i>
+                    <span>סיור קליל בפארק רייק, עלייה ברכבל לתצפית, דוכנים, אומגה, מפל וגנים בוטניים</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/53K5uMPanmF8C8236" target="_blank" rel="noopener noreferrer" class="nav-link">ניווט לפארק רייק</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-tram"></i>
+                    <span>הרכבל עולה מהפארק למצודת נרקילה: <strong>3 לארי לצד</strong> לאדם (6 לארי הלוך-ושוב = 7.8 ₪) – תשלום באשראי ישירות בעלייה ללא רכישת כרטיסים</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/4GyU9CQASyjvQWrs7" target="_blank" rel="noopener noreferrer" class="nav-link">מיקום תחנת הרכבל</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-binoculars"></i>
+                    <span>בהר למעלה תצפית נהדרת על כל העיר</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-bolt"></i>
+                    <span>אומגה לגנים הבוטניים (מול היציאה מהרכבל): <strong>50 לארי</strong> לאדם (65 ₪) – ניתן לשלם באשראי <span class="tag-opt">אופציונלי</span></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/UZz21hKhU4ijyKY46" target="_blank" rel="noopener noreferrer" class="nav-link">מיקום האומגה</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-water"></i>
+                    <span><a href="https://maps.app.goo.gl/QHy54vNtZRTXJ3tM6" target="_blank" rel="noopener noreferrer" class="nav-link">המפל והגשר בגנים הבוטניים</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-walking"></i>
+                    <span>הליכה חזרה לכיוון פסל מאמא גאורגיה ודוכני המזכרות</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-lightbulb"></i>
+                    <span><strong>טיפ:</strong> לא לקנות מזכרות בהר! רק בשווקים המקומיים בהמשך הטיול</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-moon"></i>
+                    <span>ירידה בחזרה ברכבל לפארק – לאחר השקיעה גשר השלום מואר בשלל צבעים</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">18:30-20:00</span>
+                    <span class="summary-title">חזרה לארוחת ערב</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-utensils"></i>
+                    <span>ארוחת ערב במלון או באחת מהמסעדות הכשרות לבחירתכן</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">20:00-21:00</span>
+                    <span class="summary-title">מוזיאון האשליות (אופציונלי)</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-camera-retro"></i>
+                    <span>מוזיאון אשליות משעשע לתמונות מצחיקות <span class="tag-opt">אופציונלי</span></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-shekel-sign"></i>
+                    <span>עלות: <strong>50 לארי</strong> לאדם (65 ₪)</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <span>שעות פתיחה: 11:00-21:00</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/KeY9kma7VafbLjwe6" target="_blank" rel="noopener noreferrer" class="nav-link">מיקום מוזיאון האשליות</a></span>
+                </div>
+            </div>
+        </details>
+
+        <div class="good-night"><i class="fas fa-star"></i> לילה טוב!</div>
+    </section>
+
+    <!-- DAY 2 -->
+    <section class="day-card theme-sage">
+        <div class="day-header">
+            <div class="day-badge"><i class="fas fa-shopping-bag"></i></div>
+            <h2 class="day-title">30/11 יום שני - שווקים ולונה פארק מעל העיר</h2>
+        </div>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">08:00-10:00</span>
+                    <span class="summary-title">ארוחת בוקר</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-coffee"></i>
+                    <span>ארוחת בוקר רגועה לפני היציאה לשווקים</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">11:00-14:00</span>
+                    <span class="summary-title">שוק דינמו ושוק הזהב</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-store"></i>
+                    <span>השווקים המפורסמים של טביליסי – מבגדים ונעליים ועד תכשיטי זהב</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/A83HyBJBZjzLoyCi9" target="_blank" rel="noopener noreferrer" class="nav-link">כניסה מומלצת לשוק דינמו (ליד חנות מזכרות במחירים זולים)</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-walking"></i>
+                    <span>בכניסה בגדי גברים, ובהמשך פנימה לתוך השוק מגיעים לדוכני הצעצועים</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>אפשר להתמקח מעט על המחירים, בעיקר אם קונים כמה פריטים מאותו דוכן <span class="tag-cash">תשלום במזומן בלבד</span></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-gem"></i>
+                    <span><strong>שוק הזהב:</strong> סמוך לתחנת המטרו, מלא חנויות תכשיטי זהב (כ-7 דק' הליכה מדוכני הצעצועים בשוק דינמו)</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/g2MRbLE1tavpk1ibA" target="_blank" rel="noopener noreferrer" class="nav-link">מיקום שוק הזהב</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">14:00-15:00</span>
+                    <span class="summary-title">חזרה למלון</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-suitcase"></i>
+                    <span>משאירות את כל השקיות במלון, מתרעננות ויוצאות ליעד הבא (כחצי שעה נסיעה)</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">15:00-18:00</span>
+                    <span class="summary-title">פארק מתאצמינדה</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-mountain"></i>
+                    <span>תצפית יפהפייה על טביליסי ומגוון מתקני לונה פארק על ההר</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-train"></i>
+                    <span>עולים להר עם פוניקולר (קרונית על מסילה): <strong>12 לארי לצד</strong> לאדם + <strong>2 לארי</strong> כרטיס טעינה (סה"כ 26 לארי הלוך-ושוב = 33.8 ₪)</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <span>שעות פתיחה: 10:00-22:30</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/Q5U4N5QRBwzHebm99" target="_blank" rel="noopener noreferrer" class="nav-link">מיקום הפוניקולר לפארק מתאצמינדה</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-dharmachakra"></i>
+                    <span>גלגל ענק עם תצפית על כל העיר עד להרים (ביום של ראות טובה): <strong>10 לארי</strong> לאדם (13 ₪)</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span>מגוון מתקנים נוספים במקום – הטענת הכרטיס מתבצעת בקופה של הפוניקולר</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>כדאי להישאר בפארק אחרי השקיעה למראה פנורמי מרהיב של אורות העיר</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">19:00-20:30</span>
+                    <span class="summary-title">ארוחת ערב</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-utensils"></i>
+                    <span>ארוחת ערב במלון או במסעדה כשרה לבחירתכן</span>
+                </div>
+            </div>
+        </details>
+
+        <div class="good-night"><i class="fas fa-star"></i> לילה טוב!</div>
+    </section>
+
+    <!-- DAY 3 -->
+    <section class="day-card theme-brown">
+        <div class="day-header">
+            <div class="day-badge"><i class="fas fa-mountain"></i></div>
+            <h2 class="day-title">1/12 יום שלישי - יום טיול להרי הקווקז</h2>
+        </div>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">08:00-09:00</span>
+                    <span class="summary-title">ארוחת בוקר</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-coffee"></i>
+                    <span>ארוחת בוקר והתארגנות ליום טיול בהרים</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">09:30-18:00</span>
+                    <span class="summary-title">טיול יום לדרך הצבאית והרי הקווקז</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-car"></i>
+                    <span>יציאה ליום טיול יפהפה מחוץ לטביליסי בדרך ההרית למגוון נופים עם נהגת מקומית דוברת עברית</span>
+                </div>
+                <div class="info-row">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>תיאום עם הנהגת מדונה: <a href="https://wa.me/995555271722" target="_blank" rel="noopener noreferrer" class="wa-link">שליחת הודעת וואטסאפ למדונה (995-555-271722+)</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>עלות ההסעה והטיול: <strong>250 דולר</strong> (סה"כ לקבוצה) <span class="tag-cash">מזומן בלבד</span> בדולר או לארי לפי השער היומי</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-mitten"></i>
+                    <span><strong>ציוד חובה:</strong> לבוש תרמי, כולל מעיל חם וכפפות. מומלץ להביא תרמוס לשתייה חמה בדרך</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-route"></i>
+                    <span><strong>תחנות המסלול:</strong> מאגר המים ז'ינוואלי, מצודת אנאורי, מפגש הנהרות, אנדרטת הידידות</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-snowplow"></i>
+                    <span><strong>אקסטרים אופציונלי <span class="tag-cash">מזומן בלבד</span>:</strong><br>
+                    • טיול טרקטורונים (נהיגה עצמית, 40 דק'): <strong>150 לארי</strong> לאחת (195 ₪)<br>
+                    • אופנועי שלג בגודאורי (נהיגה עצמית, 20 דק'): <strong>150 לארי</strong> לאחת (195 ₪)<br>
+                    • מצנח רחיפה מעל תצפית הידידות והנוף המושלג (עם מדריך, 20 דק', כולל וידאו): <strong>350 לארי</strong> לאחת (455 ₪)</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">18:30-20:00</span>
+                    <span class="summary-title">ארוחת ערב</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-utensils"></i>
+                    <span>ארוחת ערב במלון או במסעדה לבחירתכן</span>
+                </div>
+            </div>
+        </details>
+
+        <div class="good-night"><i class="fas fa-star"></i> לילה טוב!</div>
+    </section>
+
+    <!-- DAY 4 -->
+    <section class="day-card theme-blue">
+        <div class="day-header">
+            <div class="day-badge"><i class="fas fa-plane-departure"></i></div>
+            <h2 class="day-title">2/12 יום רביעי - עוד קצת טבע, שופינג והביתה</h2>
+        </div>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">08:00-10:30</span>
+                    <span class="summary-title">ארוחת בוקר ואריזות</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-suitcase-rolling"></i>
+                    <span>נפרדות מהחדרים ומשאירות את המזוודות לשמירה במלון</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">11:00-14:30</span>
+                    <span class="summary-title">סיור רגלי לעוד קצת טביליסי</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-walking"></i>
+                    <span>מבית הכנסת הגדול, דרך רחובות יפים, שוק תת-קרקעי מפתיע ומפל במרכז העיר</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-synagogue"></i>
+                    <span><a href="https://maps.app.goo.gl/dmD7fFB99ryAgwX26" target="_blank" rel="noopener noreferrer" class="nav-link">בית הכנסת הגדול</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-road"></i>
+                    <span><a href="https://maps.app.goo.gl/BDcbVEVxxaopSiS99" target="_blank" rel="noopener noreferrer" class="nav-link">רחובות יפים בדרך</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-store-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/8cksRE1LfxrnK1YS6" target="_blank" rel="noopener noreferrer" class="nav-link">שוק מיידן (Meidan Bazaar)</a> – שוק תת-קרקעי גאורגי אמיתי, מומלץ לחוויה אותנטית</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-lock"></i>
+                    <span><a href="https://maps.app.goo.gl/9gN5gZLt2NNKDGKE6" target="_blank" rel="noopener noreferrer" class="nav-link">גשר המנעולים</a> – מהגשר ממשיכות ישירות עד למפל</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-water"></i>
+                    <span><a href="https://maps.app.goo.gl/fL3L35tUTWXeN7RN8" target="_blank" rel="noopener noreferrer" class="nav-link">מפל לגבטחבי (Leghvtakhevi Waterfall)</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-route"></i>
+                    <span><a href="https://maps.app.goo.gl/GiWY3tCsK2Sm7fm86" target="_blank" rel="noopener noreferrer" class="nav-link">מפת כל המסלול הרגלי</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">15:00-19:00</span>
+                    <span class="summary-title">שופינג בטביליסי מול (Tbilisi Mall)</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>קניון ענק בן 4 קומות עם רשתות בינלאומיות כמו Zara, Pull&Bear ועוד. חנות מומלצת לבגדי ילדים: <strong>LC Waikiki</strong></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <span>שעות פתיחה: 10:00-22:00</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/7B3UErzWUFPh8TC27" target="_blank" rel="noopener noreferrer" class="nav-link">ניווט לטביליסי מול</a></span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-traffic-light"></i>
+                    <span><strong>שימו לב:</strong> יש לקחת בחשבון כשעה נסיעה לכל צד בעקבות הפקקים בעיר בשעות אחה"צ</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">20:00-21:00</span>
+                    <span class="summary-title">ארוחת ערב אחרונה</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-utensils"></i>
+                    <span>מומלץ לאכול במלון כדי לאסוף בנוחות את המזוודות לפני היציאה לשדה</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">21:30-22:00</span>
+                    <span class="summary-title">נסיעה לשדה התעופה</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-taxi"></i>
+                    <span>נסיעה של כחצי שעה – מומלץ לבדוק זמינות מוניות כרבע שעה לפני היציאה</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/jtBpVYSanZiFzrwV6" target="_blank" rel="noopener noreferrer" class="nav-link">מיקום שדה התעופה טביליסי</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">22:00 - 00:30</span>
+                    <span class="summary-title">הגעה לשדה, המראה ונחיתה בישראל</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-passport"></i>
+                    <span><strong>22:00</strong> – הגעה לשדה התעופה ובידוק</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-plane-departure"></i>
+                    <span><strong>23:55</strong> – ממריאות הביתה</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-home"></i>
+                    <span><strong>00:30</strong> – נחיתה בישראל (ברוכות השבות!)</span>
+                </div>
+            </div>
+        </details>
+    </section>
+
+    <!-- KOSHER RESTAURANTS -->
+    <section id="kosher-restaurants" class="day-card theme-sage">
+        <div class="day-header">
+            <div class="day-badge"><i class="fas fa-utensils"></i></div>
+            <h2 class="day-title">מסעדות כשרות בטביליסי</h2>
+        </div>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">חלבי</span>
+                    <span class="summary-title">חלב ודבש (מהדרין)</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-cheese"></i>
+                    <span>חלבי מהדרין, מומלץ מאוד – חצ'פורי מעולה</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <span>שעות פתיחה: 10:00-22:00</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/3iCn4NFaifhAtxrp8" target="_blank" rel="noopener noreferrer" class="nav-link">ניווט למסעדת חלב ודבש</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">בשרי</span>
+                    <span class="summary-title">לה קאסה (מהדרין)</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <span>בשרי מהדרין, מנות מעולות</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <span>שעות פתיחה: 14:00-23:00</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/M1m5B7J4rafg8v4V7" target="_blank" rel="noopener noreferrer" class="nav-link">ניווט למסעדת לה קאסה</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">בשרי</span>
+                    <span class="summary-title">אורגניק (מהדרין)</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <span>בשרי מהדרין, מומלץ</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <span>שעות פתיחה: 11:30-23:00</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/BaxNZhFBc3wPP5fH9" target="_blank" rel="noopener noreferrer" class="nav-link">ניווט למסעדת אורגניק</a></span>
+                </div>
+            </div>
+        </details>
+
+        <details class="schedule-item">
+            <summary class="schedule-summary">
+                <div class="summary-main">
+                    <span class="time-pill">חב"ד</span>
+                    <span class="summary-title">מנדיס (חלבי ובשרי מהדרין)</span>
+                </div>
+                <i class="fas fa-chevron-down chevron"></i>
+            </summary>
+            <div class="details-content">
+                <div class="info-row">
+                    <i class="fas fa-star-of-david"></i>
+                    <span>מהדרין חב"ד – חלבי בקומה למעלה, בשרי בקומה למטה</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-clock"></i>
+                    <span>שעות פתיחה: חלבי 10:00-14:00 | בשרי 14:00-21:30</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><a href="https://maps.app.goo.gl/aWtZYEpUrDsw2au1A" target="_blank" rel="noopener noreferrer" class="nav-link">ניווט למסעדת מנדיס</a></span>
+                </div>
+            </div>
+        </details>
+    </section>
+
+    <!-- COST SUMMARY TABLE -->
+    <section id="cost-summary" class="day-card theme-brown">
+        <div class="day-header">
+            <div class="day-badge"><i class="fas fa-calculator"></i></div>
+            <h2 class="day-title">ריכוז עלויות לאדם (לארי לפי 1.3 ₪)</h2>
+        </div>
+
+        <div class="cost-table-wrapper">
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>שם אתר</th>
+                        <th>עלות במטבע מקומי</th>
+                        <th>עלות בש"ח (1.3)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>מוזיאון יהדות גאורגיה <span class="tag-opt">אופציונלי</span></td>
+                        <td>10 לארי</td>
+                        <td>13 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>שייט על נהר הקורה <span class="tag-cash">מזומן</span></td>
+                        <td>30 לארי</td>
+                        <td>39 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>רכבל למצודת נרקילה (הלוך-ושוב, 3 לצד)</td>
+                        <td>6 לארי</td>
+                        <td>7.8 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>אומגה לגנים הבוטניים <span class="tag-opt">אופציונלי</span></td>
+                        <td>50 לארי</td>
+                        <td>65 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>מוזיאון האשליות <span class="tag-opt">אופציונלי</span></td>
+                        <td>50 לארי</td>
+                        <td>65 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>פוניקולר מתאצמינדה (12×2 + 2 כרטיס)</td>
+                        <td>26 לארי</td>
+                        <td>33.8 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>גלגל ענק בפארק מתאצמינדה</td>
+                        <td>10 לארי</td>
+                        <td>13 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>יום טיול הרי הקווקז – נהגת <span class="tag-cash">מזומן</span></td>
+                        <td>$250 (סה"כ לרכב)</td>
+                        <td>מתחלק בין המשתתפות</td>
+                    </tr>
+                    <tr>
+                        <td>טרקטורונים בהרי הקווקז (40 דק') <span class="tag-opt">אופציונלי</span> <span class="tag-cash">מזומן</span></td>
+                        <td>150 לארי</td>
+                        <td>195 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>אופנועי שלג בגודאורי (20 דק') <span class="tag-opt">אופציונלי</span> <span class="tag-cash">מזומן</span></td>
+                        <td>150 לארי</td>
+                        <td>195 ₪</td>
+                    </tr>
+                    <tr>
+                        <td>מצנח רחיפה תצפית הידידות <span class="tag-opt">אופציונלי</span> <span class="tag-cash">מזומן</span></td>
+                        <td>350 לארי</td>
+                        <td>455 ₪</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="summary-row-base">
+                        <td>סה"כ אתרי המסלול הבסיסי לאדם (ללא אופציונלי)</td>
+                        <td>72 לארי</td>
+                        <td>93.6 ₪</td>
+                    </tr>
+                    <tr class="summary-row-total">
+                        <td>סה"כ עלויות לאדם (כולל כל האופציונלי והאקסטרים)</td>
+                        <td>832 לארי + חלק ב-$250</td>
+                        <td>1,081.6 ₪ + חלק בהסעה</td>
+                    </tr>
+                    <tr class="summary-row-cash">
+                        <td>סה"כ אטרקציות במזומן בלבד לאדם</td>
+                        <td>30 לארי (בסיסי) / 680 לארי (עם אקסטרים) + חלק ב-$250</td>
+                        <td>39 ₪ (בסיסי) / 884 ₪ (עם אקסטרים) + חלק בהסעה</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-primary">כל הזכויות שמורות להדס טרכטר - יועצת טיולים בארץ ובעולם 050-5685356</p>
+        <p class="footer-secondary">אין להעביר ללא אישור מפורש. העובר על כך עובר על גזל לפי דין תורה וחוקי המקום</p>
+    </footer>
+</div>
+
+</body>
+</html>
